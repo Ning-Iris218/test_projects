@@ -1,10 +1,14 @@
 import pytest
+from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from login_page import LoginPage
 
 @pytest.fixture(scope='module')
 def login_browser():
-    driver = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--window-size=1920,1080')
+    driver = webdriver.Chrome(options=chrome_options)
     driver.implicitly_wait(10)
     driver.get("https://www.saucedemo.com/")
 
