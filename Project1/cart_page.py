@@ -1,4 +1,6 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class Cart_Page:
     _REMOVE_BACKPACK=(By.ID,'remove-sauce-labs-backpack')
@@ -11,7 +13,9 @@ class Cart_Page:
         self.driver.find_element(*self._REMOVE_BACKPACK).click()
 
     def checkout(self):
-        self.driver.find_element(*self._CHECK_OUT).click()
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(EC.element_to_be_clickable(self._CHECK_OUT)).click()
+
 
     def get_items_count(self):
         items=self.driver.find_elements(By.CLASS_NAME,'cart_item')
