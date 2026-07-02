@@ -21,8 +21,10 @@ class HomePage:
             button.click()
 
     def go_to_cart(self):
-        WebDriverWait(self.driver,10).until(
+        cart_btn=WebDriverWait(self.driver,10).until(
             EC.element_to_be_clickable((self._CART_BUTTON))
         )
-        self.driver.find_element(*self._CART_BUTTON).click()
+        self.driver.execute_script('arguments[0].click();', cart_btn)
+
+        WebDriverWait(self.driver,10).until(EC.url_contains('cart.html'))
 
