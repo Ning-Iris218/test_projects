@@ -13,6 +13,8 @@ class Cart_Page:
         self.driver.find_element(*self._REMOVE_BACKPACK).click()
 
     def checkout(self):
+        print(f"准备点击结算，当前网址是: {self.driver.current_url}")
+        print(f"当前页面的标题是: {self.driver.title}")
         wait = WebDriverWait(self.driver, 10)
         wait.until(EC.element_to_be_clickable(self._CHECK_OUT)).click()
 
