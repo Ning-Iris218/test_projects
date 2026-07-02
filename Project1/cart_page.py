@@ -15,8 +15,10 @@ class Cart_Page:
     def checkout(self):
         print(f"准备点击结算，当前网址是: {self.driver.current_url}")
         print(f"当前页面的标题是: {self.driver.title}")
-        wait = WebDriverWait(self.driver, 10)
-        wait.until(EC.element_to_be_clickable(self._CHECK_OUT)).click()
+        checkout_btn = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(self._CHECK_OUT)
+        )
+        self.driver.execute_script("arguments[0].click();", checkout_btn)
 
 
     def get_items_count(self):
