@@ -26,9 +26,11 @@ jobs:
       run: |
         pytest Project1/test_case2.py -s --alluredir=./allure-results
 
-    - name: 5. 存档测试报告 (Artifacts)
-      uses: actions/upload-artifact@v4
+    - name: 5. 生成Allure报告，发布到github pages
+      uses: simple-elf/allure-report-action@v1.9
       if: always()
       with:
-        name: allure-results
-        path: ./allure-results
+        allure_results: allure-results
+        gh-pages: gh-pages
+        allure_report: allure-report
+        allure_history: allure-history
