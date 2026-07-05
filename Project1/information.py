@@ -19,4 +19,5 @@ class Information_Page:
 
     def click_continue(self):
         continue_btn = self.wait.until(EC.element_to_be_clickable(self._CONTINUE_BUTTON))
-        self.driver.execute_script("arguments[0].click();", continue_btn)
+        continue_btn.click()
+        self.wait.until(EC.url_contains("step-two"))
