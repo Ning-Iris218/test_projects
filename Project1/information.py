@@ -38,5 +38,5 @@ class Information_Page:
         try:
             self.wait.until(EC.url_contains("step-two"))
         except TimeoutException:
-            self.driver.save_screenshot("despair_screenshot.png")
+            self.driver.save_screenshot("github_error_screenshot.png")
             raise
