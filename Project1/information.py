@@ -14,16 +14,20 @@ class Information_Page:
         self.driver=driver
         self.wait=WebDriverWait(driver,10)
 
-    def fill_info(self,first_name,last_name,postal_code):
+    def fill_info(self, first_name, last_name, postal_code):
+        time.sleep(1)
         fn = self.wait.until(EC.visibility_of_element_located(self._FIRST_NAME))
+        fn.click()
         fn.clear()
         fn.send_keys(first_name)
 
         ln = self.wait.until(EC.visibility_of_element_located(self._LAST_NAME))
+        ln.click()
         ln.clear()
         ln.send_keys(last_name)
 
         pc = self.wait.until(EC.visibility_of_element_located(self._POST_CODE))
+        pc.click()
         pc.clear()
         pc.send_keys(postal_code)
 
