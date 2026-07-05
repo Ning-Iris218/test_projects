@@ -26,9 +26,13 @@ jobs:
       run: |
         pytest Project1/test_case2.py -s --alluredir=./allure-results
 
-    - name: 4. 运行自动化测试
-      run: |
-        pytest Project1/test_case2.py -s --alluredir=./allure-results
+    - name: 上传错误截图
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+          name: error-screenshot-evidence
+          path: github_error_screenshot.png
+
 
     - name: 5. 报告加工厂：生成 Allure 网页数据
       uses: simple-elf/allure-report-action@v1.14
