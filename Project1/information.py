@@ -15,9 +15,17 @@ class Information_Page:
         self.wait=WebDriverWait(driver,10)
 
     def fill_info(self,first_name,last_name,postal_code):
-        self.wait.until(EC.presence_of_element_located(self._FIRST_NAME)).send_keys(first_name)
-        self.wait.until(EC.presence_of_element_located(self._LAST_NAME)).send_keys(last_name)
-        self.wait.until(EC.presence_of_element_located(self._POST_CODE)).send_keys(postal_code)
+        fn = self.wait.until(EC.visibility_of_element_located(self._FIRST_NAME))
+        fn.clear()
+        fn.send_keys(first_name)
+
+        ln = self.wait.until(EC.visibility_of_element_located(self._LAST_NAME))
+        ln.clear()
+        ln.send_keys(last_name)
+
+        pc = self.wait.until(EC.visibility_of_element_located(self._POST_CODE))
+        pc.clear()
+        pc.send_keys(postal_code)
 
     def click_continue(self):
         try:
