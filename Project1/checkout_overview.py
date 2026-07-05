@@ -10,9 +10,9 @@ class Checkout_Overview:
         self.driver = driver
 
     def click_finish(self):
+        print(f"当前在结算预览页，网址: {self.driver.current_url}")
         wait = WebDriverWait(self.driver, 10)
         finish_btn=wait.until(EC.presence_of_element_located(self._FIN_BUTTON))
-        print(f"当前在结算预览页，网址: {self.driver.current_url}")
         self.driver.execute_script('arguments[0].click();', finish_btn)
 
 

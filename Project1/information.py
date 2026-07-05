@@ -18,4 +18,5 @@ class Information_Page:
         self.wait.until(EC.presence_of_element_located(self._POST_CODE)).send_keys(postal_code)
 
     def click_continue(self):
-        self.driver.find_element(*self._CONTINUE_BUTTON).click()
+        continue_btn = self.wait.until(EC.element_to_be_clickable(self._CONTINUE_BUTTON))
+        self.driver.execute_script("arguments[0].click();", continue_btn)
